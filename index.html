@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memestash プライバシーポリシー</title>
+<meta name="description" content="Memestash のプライバシーポリシー。あなたのデータは端末内にのみ保存され、収集・送信・第三者提供は行いません。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== Nightlime デザイントークン ===== */
+  :root {
+    --bg: #ECE3FF;
+    --surface: #FFFDF5;
+    --outline: #111111;
+    --text: #111111;
+    --text-secondary: #6B6B6B;
+    --accent-primary: #C6F432;
+    --accent-warn: #FF5247;
+    --accent-info: #FFD23F;
+    --shadow: #111111;
+    --on-accent: #111111;
+
+    --r12: 12px;
+    --r16: 16px;
+    --r24: 24px;
+    --pill: 999px;
+
+    --font-display: "Dela Gothic One", sans-serif;
+    --font-body: "Zen Maru Gothic", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15111E;
+      --surface: #221E2E;
+      --outline: #F5EFE0;
+      --text: #F5EFE0;
+      --text-secondary: #B9B0D6;
+      --accent-primary: #D4FF3D;
+      --accent-warn: #FF6B5C;
+      --accent-info: #FFE14D;
+      --shadow: #000000;
+      --on-accent: #111111;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    padding: 24px 16px 64px;
+    /* ほんのり背景に丸ドットを散らす（うるさくならない密度で） */
+    background-image: radial-gradient(var(--accent-primary) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    background-attachment: fixed;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background-image: radial-gradient(rgba(212,255,61,0.10) 1.5px, transparent 1.5px); }
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  /* ===== ネオブルータリズムの面 ===== */
+  .panel {
+    background: var(--surface);
+    border: 2.5px solid var(--outline);
+    border-radius: var(--r24);
+    box-shadow: 5px 5px 0 var(--shadow);
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    text-align: center;
+    padding: 40px 24px 36px;
+    margin-bottom: 28px;
+  }
+  .logo-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    background: var(--accent-primary);
+    border: 2.5px solid var(--outline);
+    border-radius: var(--r24);
+    box-shadow: 4px 4px 0 var(--shadow);
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--on-accent);
+    line-height: 1;
+    margin-bottom: 20px;
+    transform: rotate(-3deg);
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 8vw, 40px);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(16px, 4.5vw, 19px);
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-primary);
+    color: var(--on-accent);
+    border: 2.5px solid var(--outline);
+    border-radius: var(--pill);
+    padding: 7px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 3px 3px 0 var(--shadow);
+  }
+  .updated {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ===== イントロ文 ===== */
+  .lead {
+    padding: 24px 24px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  .lead strong { font-weight: 700; }
+
+  /* ===== セクションカード ===== */
+  .card {
+    padding: 24px 24px 26px;
+    margin-bottom: 20px;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--shadow);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .num {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: var(--surface);
+    border: 2.5px solid var(--outline);
+    border-radius: var(--r12);
+    box-shadow: 2px 2px 0 var(--shadow);
+    font-family: var(--font-display);
+    font-size: 16px;
+  }
+  .num.lime { background: var(--accent-primary); color: var(--on-accent); }
+  .num.info { background: var(--accent-info); color: var(--on-accent); }
+  .card h2 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: clamp(17px, 4.5vw, 19px);
+  }
+  .card p { font-size: 15px; }
+  .card p + p { margin-top: 12px; }
+
+  /* 本文中の強調：ライムのマーカー風ハイライト */
+  .card strong, .lead strong {
+    font-weight: 700;
+    background: linear-gradient(transparent 58%, var(--accent-primary) 58%);
+    padding: 0 2px;
+    color: var(--text);
+  }
+  @media (prefers-color-scheme: dark) {
+    .card strong, .lead strong { color: var(--on-accent); }
+  }
+
+  /* チェックリスト（収集しないこと） */
+  .checks { list-style: none; margin-top: 14px; display: grid; gap: 10px; }
+  .checks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .checks .ic {
+    flex: 0 0 auto;
+    display: inline-flex;
+    width: 28px; height: 28px;
+    align-items: center; justify-content: center;
+    background: var(--accent-primary);
+    border: 2px solid var(--outline);
+    border-radius: var(--pill);
+  }
+
+  /* ===== お問い合わせ ===== */
+  .contact { padding: 28px 24px; text-align: center; }
+  .contact .card-head { justify-content: center; }
+  .mail {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--accent-primary);
+    color: var(--on-accent);
+    border: 2.5px solid var(--outline);
+    border-radius: var(--pill);
+    box-shadow: 3px 3px 0 var(--shadow);
+    padding: 10px 22px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .mail:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--shadow); }
+
+  footer {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  footer .m {
+    font-family: var(--font-display);
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <header class="hero panel">
+    <div class="logo-tile">m</div>
+    <div class="wordmark">memestash</div>
+    <h1>プライバシーポリシー</h1>
+    <div>
+      <span class="badge">🔒 プライバシー最優先設計</span>
+    </div>
+    <p class="updated">最終更新日: 2026年5月30日</p>
+  </header>
+
+  <!-- イントロ -->
+  <section class="lead panel">
+    <p>Memestash（以下「本アプリ」）は、あなたのプライバシーを最優先に設計されています。本アプリは、ユーザーの<strong>個人データを収集・送信・第三者提供しません</strong>。</p>
+  </section>
+
+  <!-- 収集する情報 -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num lime">01</span>
+      <h2>収集する情報</h2>
+    </div>
+    <p>本アプリは、利用者を識別する情報や行動データを<strong>一切収集しません</strong>。アカウント登録はなく、サーバーも持ちません。</p>
+    <ul class="checks">
+      <li><span class="ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 6.5" stroke="#111111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>解析（アナリティクス）なし</li>
+      <li><span class="ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 6.5" stroke="#111111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>広告なし</li>
+      <li><span class="ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 6.5" stroke="#111111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>トラッキングなし</li>
+    </ul>
+  </section>
+
+  <!-- データの保存場所 -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">02</span>
+      <h2>データの保存場所</h2>
+    </div>
+    <p>本アプリで取り込んだ画像、抽出テキスト（OCR）、タグなどのデータは、<strong>あなたの端末内にのみ保存</strong>されます。</p>
+    <p>クラウド同期を有効にした場合は、それらは<strong>あなた自身のクラウドストレージ</strong>（iOS では iCloud、Android では Google ドライブなど）に保存・同期されます。この場合のデータは各サービスの規約に従って管理され、<strong>開発者はアクセスできません</strong>。</p>
+  </section>
+
+  <!-- OCR -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">03</span>
+      <h2>画像と文字認識（OCR）について</h2>
+    </div>
+    <p>取り込んだ画像と、そこから抽出した文字（OCR テキスト）、付与したタグは、端末内にのみ保存されます。</p>
+    <p>文字認識は端末内の文字認識機能（iOS では Apple Vision など）で処理され、画像やテキストが<strong>外部に送信されることはありません</strong>。</p>
+  </section>
+
+  <!-- 写真へのアクセス -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">04</span>
+      <h2>写真へのアクセス</h2>
+    </div>
+    <p>本アプリは、あなたが選択・共有した画像を取り込むためだけに写真へアクセスします。アクセスした画像が<strong>外部にアップロード・送信されることはありません</strong>。</p>
+  </section>
+
+  <!-- カスタムキーボード -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num info">05</span>
+      <h2>カスタムキーボードについて</h2>
+    </div>
+    <p>本アプリのカスタムキーボードは、画像をクリップボードにコピーする機能と、本アプリが保存した画像倉庫を読み取る機能のために、必要な権限（iOS では「フルアクセス」）を利用します。</p>
+    <p><strong>キーボードで入力された文字（キーストローク）を記録・保存・送信することは一切ありません。</strong> また、本アプリはネットワーク通信を行いません。</p>
+  </section>
+
+  <!-- 第三者提供 -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">06</span>
+      <h2>第三者への提供・外部サービス</h2>
+    </div>
+    <p>本アプリは、<strong>第三者へのデータ提供を行いません</strong>。広告 SDK・解析 SDK などのサードパーティ製コードを組み込んでいません。</p>
+  </section>
+
+  <!-- お子様 -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">07</span>
+      <h2>お子様のプライバシー</h2>
+    </div>
+    <p>本アプリは個人情報を収集しないため、<strong>年齢を問わず安全に</strong>ご利用いただけます。</p>
+  </section>
+
+  <!-- ポリシーの変更 -->
+  <section class="card panel">
+    <div class="card-head">
+      <span class="num">08</span>
+      <h2>ポリシーの変更</h2>
+    </div>
+    <p>本ポリシーを変更する場合は、このページを更新し、上部の「最終更新日」を改めます。</p>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="contact panel">
+    <div class="card-head">
+      <span class="num lime">✉</span>
+      <h2>お問い合わせ</h2>
+    </div>
+    <p>本ポリシーや本アプリのプライバシーに関するお問い合わせは、以下までご連絡ください。</p>
+    <a class="mail" href="mailto:support@memestash.app">support@memestash.app</a>
+  </section>
+
+  <footer>
+    <span class="m">memestash</span> — あなただけのミーム倉庫。
+  </footer>
+
+</div>
+</body>
+</html>
